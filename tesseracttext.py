@@ -11,21 +11,16 @@ def preprocess_image(image_path):
         print("❌ Image not found. Check the path!")
         return None
 
-    # Resize
     img = cv2.resize(img, None, fx=2, fy=2, interpolation=cv2.INTER_LINEAR)
 
-    # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # Slight blur
     blur = cv2.GaussianBlur(gray, (3, 3), 0)
 
-    # Threshold to binary
     _, thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
     return thresh
 
-# Load and preprocess image
 image_path = r'C:\Mrinal\TestImages\esss.jpg'  # Update if necessary
 processed_image = preprocess_image(image_path)
 
